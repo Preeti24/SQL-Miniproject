@@ -58,6 +58,7 @@ Select distinct  name, case when monthlymaintenance >100 then 'Expensive' else '
 
 /* Q6: You'd like to get the first and last name of the last member(s)
 who signed up. Do not use the LIMIT clause for your solution. */
+
 select firstname,surname from country_club.Members where joindate=(select max(joindate) from country_club.Members)
 
 
@@ -93,6 +94,7 @@ order by Cost Desc
 
 
 /* Q9: This time, produce the same result as in Q8, but using a subquery. */
+
 select * from (
 SELECT distinct B.name, CONCAT( C.firstname, ' ', C.surname ) AS 'MemberName', Case when A.memid=0 then A.slots*B.guestcost else A.slots*B.membercost end as Cost
 FROM `Bookings` A, Facilities B, Members C WHERE 
